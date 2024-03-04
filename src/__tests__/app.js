@@ -194,4 +194,23 @@ test('Cas non passant', () => {
   expect(button1).toHaveTextContent(/Confirm/i)
   //Test 26
   userEvent.click(button1)
+  
+  //Test 27-28
+  await waitFor(() => expect(screen.getByText(/Oh no. There was an error./i)).toBeInTheDocument())
+  
+  //Test 29
+  expect(screen.getByText(/Oh no. There was an error./i)).toBeInTheDocument()
+  
+  //Test 30
+  expect(screen.getByText(/Go home/i)).toBeInTheDocument()
+  
+  //Test 31
+  expect(screen.getByText(/Try again/i)).toBeInTheDocument()
+  
+  //Test 32
+  userEvent.click(screen.getByText(/Try again/i))
+  
+  //Test 33-34
+  expect(screen.getByRole('heading')).toHaveTextContent(/page 1/i)
+
 })
